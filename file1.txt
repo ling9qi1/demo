@@ -1,0 +1,43 @@
+package main
+
+import "fmt"
+
+func twoNums(nums []int, target int) []int {
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+		}
+	}
+	return nil
+
+}
+
+func main() {
+	var nums []int
+	fmt.Println("Enter numbers, separated by spaces:")
+
+	for {
+		var num int
+		_, err := fmt.Scanf("%d", &num)
+		if err != nil {
+			break
+		}
+		nums = append(nums, num)
+	}
+	fmt.Println()
+	fmt.Println(nums)
+	var target int
+	fmt.Println("Enter the target number:")
+	fmt.Scanf("%d", &target)
+	fmt.Printf("Target: %d\n", target)
+	result := twoNums(nums, target)
+	if result == nil {
+		fmt.Println("No two numbers add up to the target.")
+	} else {
+		fmt.Println(result)
+	}
+
+}
+
